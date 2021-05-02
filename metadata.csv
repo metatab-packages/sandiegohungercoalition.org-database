@@ -1,6 +1,6 @@
 Declare,metatab-latest
-Title,
-Description,
+Title,San Diego Hunger Coalition Database
+Description,Apex data package for the SDHC data collection
 Identifier,80a44528-5756-4b3c-8ec8-e15e452ec097
 Name,sandiegohungercoalition.org-database-1.1.1
 Dataset,database
@@ -14,7 +14,7 @@ Version.Major,1
 Version.Minor,1
 Version.Patch,1
 Created,2021-04-05T20:19:24
-Modified,2021-04-05T20:19:24
+Modified,2021-04-05T23:23:11
 Giturl,https://github.com/sandiegodata-projects/sandiegohungercoalition-collection.git
 ""
 Section,Contacts,Email,Organization,Url
@@ -26,5 +26,67 @@ Documentation,file:README.md,README,,
 Section,References,Name,Description,
 ""
 Section,Resources,Name,Description,
+Datafile,metapack+http://cde.metatab.org/cde.ca.gov-frpm-1.2.1.csv#frp_meals,frp_meals,Free and reduced price meals,
+Datafile,metapack+http://cde.metatab.org/sandiegohungercoalition.org-nslp-1.1.1.csv#nslp_14_18,nslp_14_18,"NSLP From the Redship database, 2014 through 2018.",
 ""
 Section,Schema,DataType,AltName,Description
+Table,frp_meals,,,
+Table.Column,county_code,integer,,A unique two-digit code corresponding to the county.
+Table.Column,district_code,integer,,A unique five-digit code corresponding to the district.
+Table.Column,school_code,integer,,A unique seven-digit code corresponding to the school.
+Table.Column,charter_school_number,integer,,A four character value (any combination of numbers and letters) assigned to a charter school. A blank value indicates the school is not a charter school.
+Column.Has_Codes,T
+Table.Column,charter_funding_type,string,,"Indicates the charter school funding type. Values are as follows: Locally funded, Directly funded, Not in Charter School funding model, or Blank."
+Table.Column,lea_name,string,,Local educational agency (LEA) name.
+Table.Column,school_name,text,,
+Table.Column,low_grade,string,,
+Table.Column,high_grade,integer,,
+Column.Has_Codes,T
+Table.Column,enrollment,integer,,A total count of students ages 5-17 enrolled (primary or short-term) on Census Day (the first Wednesday in October). These data were submitted to CALPADS as part of the annual Fall 1 submission.
+Table.Column,free_meal_count,integer,,
+Table.Column,reduced_price_meals,integer,,
+Table.Column,total_frpm,integer,,
+Table.Column,percent_frpm,number,,
+Table.Column,county_name,string,,
+Table.Column,data_source_for_frpm,string,,
+Table.Column,academic_year,string,,The academic year corresponding to the annual Census Day from which official enrollment counts are determined using data submitted to the California Longitudinal Pupil Achievement Data System (CALPADS) by districts and charter schools. Census Day or Information Day is always the first Wednesday in October.
+Table.Column,provision_2_or_3_school_y_n,string,,
+Table.Column,data_source_for_provision_2_or_3_school,string,,"This indicates the data source for Provision 2 or 3 school data. ""NSD"" indicates that the data are sourced from October 2012 claim data submitted to the CDE's Nutrition Services Division (NSD); ""CARS"" indicates that the data are sourced from base percentages that LEAs certified in the Consolidated Application and Reporting System (CARS) in 2011–12. Since only percentages were collected for Provision 2 and 3 schools, a value of ""NULL"" is displayed instead of counts of students eligible for these schools."
+Table.Column,free_meal_count_k_12,integer,,"Of the Enrollment (K-12), a total unduplicated count of students who meet household income or categorical eligibility criteria for free meals based on one or more of the following reasons: (1) applying for the National School Lunch Program (NSLP); (2) submitting alternative household income forms; (3) student homeless or migrant statuses in CALPADS; (4) being ""directly certified"" through CALPADS as participating in California's food stamp or CalWORKs programs during July - November; or (5) being identified through the weekly CALPADS Foster Matching process or matched by the LEA through the CALPADS online match process as being in Foster Placement or Foster Family Maintenance on Census day. The Free Meal Count (K-12) is not displayed on any CALPADS report; however, this count represents the official Free Meal Count (K-12) for the academic year."
+Table.Column,percent_eligible_free_k_12,number,,The percent of students eligible for free meals. [Free Meal Count (K-12) divided by Enrollment (K-12)].
+Table.Column,frpm_total_unduplicated_count_k_12,string,,"Of the students (K–12) enrolled in the school, the total unduplicated count of who are eligible to receive free or reduced price meals (FRPM). Students may be eligible for free meals based on applying for the National School Lunch Program (NSLP), or who are determined to meet the same income eligibility criteria as the NSLP, through their local schools, their homeless, migrant, or foster status, or participation in California’s food stamp program. There are no counts provided for Provision 2 and 3 schools because only percentages were collected for these schools; as a result, a value of ""NULL"" is displayed instead of counts of students eligible."
+Table.Column,percent_eligible_frpm_k_12,number,,The percent of students eligible for free or reduced price meals (FRPM). [FRPM Count (K-12) divided by Enrollment (K-12)].
+Table.Column,calpads_enrollment,integer,,A total count of students ages 5-17 enrolled (primary or short-term) on Census Day (the first Wednesday in October). These data were submitted to CALPADS as part of the annual Fall 1 submission.
+Table.Column,percent_eligible_free,number,,The percent of students eligible for free meals. [Free Meal Count (Ages 5-17) divided by Enrollment (Ages 5-17)].
+Table.Column,nslp_provision_2_or_3_school,string,,"A Y or N value to indicate whether a school is on a National School Lunch Program (NSLP) provision 2 or 3 status. ""Y"" indicates the school is on a provisional status; ""N"" indicates the school is not. For more information on provision status, please refer to the United States Department of Agriculture (USDA) Food Nutrition Service Web page  External link opens in new window or tab.."
+Table.Column,unadjusted_free_meal_count_k_12,integer,,
+Table.Column,unadjusted_frpm_count_k_12,integer,,"Of the Enrollment (K-12) count, a total unduplicated count of students who are eligible to receive free or reduced price meals (FRPM). Students may be eligible for free or reduced price meals based on applying for the National School Lunch Program (NSLP), or who are determined to meet the same income eligibility criteria as the NSLP through their local schools, or their homeless, migrant, or foster status in CALPADS, or those students ""directly certified"" as participating in California's food stamp program during July - November 2013. This count corresponds to the ""Free & Reduced Meal Count"" provided in the CALPADS certification report 5.1a: Free or Reduced Price Meal Eligibility - Count."
+Table.Column,frpm_count_k_12,integer,,"Of the Enrollment (K-12), a total unduplicated count of students who meet household income or categorical eligibility criteria for free or reduced meals (FRPM) based on one or more of the following reasons: (1) applying for the National School Lunch Program (NSLP); (2) submitting alternative household income forms; (3) student homeless or migrant statuses in CALPADS; (4) being ""directly certified"" through CALPADS as participating in California's food stamp or CalWORKs programs during July - November; or (5) being identified through the weekly CALPADS Foster Matching process or matched by the LEA through the CALPADS online match process as being in Foster Placement or Foster Family Maintenance on Census day. The FRPM Count (K-12) generally corresponds to the ""Total Unduplicated Eligible Free/Reduced Meal Counts"" provided in CALPADS certification report 1.17: FRPM/English Learner/Foster Youth – Count; however, this count has been augmented to also included students identified as being in Foster Family Maintenance on Census Day, as these students have been determined to be categorically eligible for free meals. This adjustment was made outside of CALPADS and is not included in the ""Total Unduplicated Eligible Free/Reduced Meal Counts"" provided in CALPADS certification report 1.17: FRPM/English Learner/Foster Youth – Count; however, this count represents the official FRPM Count (K-12) for the academic year."
+Table.Column,unadjusted_free_meal_count,integer,,
+Table.Column,unadjusted_frpm_count,integer,,"Of the Enrollment (K-12) count, a total unduplicated count of students who are eligible to receive free meals. Students may be eligible for free meals based on applying for the National School Lunch Program (NSLP), or who are determined to meet the same income eligibility criteria as the NSLP through their local schools, or their homeless, migrant, or foster status in CALPADS, or those students ""directly certified"" as participating in California's food stamp program during July - November 2013. This count corresponds to the ""Free Meal Count"" provided in the CALPADS certification report 5.1a: Free or Reduced Price Meal Eligibility – Count."
+Table.Column,frpm_count,integer,,"Of the Enrollment (Ages 5-17), a total unduplicated count of students who meet household income or categorical eligibility criteria for free or reduced meals (FRPM) based on one or more of the following reasons: (1) applying for the National School Lunch Program (NSLP); (2) submitting alternative household income forms; (3) student homeless or migrant statuses in CALPADS; (4) being ""directly certified"" through CALPADS as participating in California's food stamp or CalWORKs programs during July - November; or (5) being identified through the weekly CALPADS Foster Matching process or matched by the LEA through the CALPADS online match process as being in Foster Placement or Foster Family Maintenance on Census day. The FRPM Count (Ages 5-17) generally corresponds to the ""Total Unduplicated Eligible Free/Reduced Meal Counts"" provided in CALPADS certification report 1.17: FRPM/English Learner/Foster Youth – Count with the 5-17 Year Olds filter applied; however, this count has been augmented to also included students identified as being in Foster Family Maintenance on Census Day, as these students have been determined to be categorically eligible for free meals. This adjustment was made outside of CALPADS and is not included in the ""Total Unduplicated Eligible Free/Reduced Meal Counts"" provided in CALPADS certification report 1.17: FRPM/English Learner/Foster Youth – Count; however, this count represents the official FRPM Count (Ages 5-17) for the academic year."
+Table.Column,calpads_fall_1_certification_status,string,,"A Y or N value to indicate whether data were submitted and certified in CALPADS. No data are provided where the certification status is ""N""."
+Table.Column,district_type,string,,
+Table.Column,school_type,string,,
+Table.Column,educational_option_type,string,,
+Table.Column,nslp_provision_status,string,,
+Table.Column,charter_school_y_n,string,,"A ""Y"" or ""N"" value indicating whether a school is a charter school in the current academic year."
+Table.Column,irc,string,,
+Table,nslp_14_18,,,
+Table.Column,fnsreportdate,date,,
+Column.Has_Codes,T
+Table.Column,academicyear,string,,
+Table.Column,programcode,string,,
+Table.Column,programgroupyear,integer,,
+Table.Column,county,string,,
+Table.Column,sponsorname,string,,
+Table.Column,siteid,unknown,,
+Table.Column,sitename,string,,
+Table.Column,mealtypecode,string,,
+Table.Column,daysservedqty,integer,,
+Table.Column,mlsservedfree,integer,,
+Table.Column,mlsservedredc,integer,,
+Table.Column,mlsservedpaid,integer,,
+Table.Column,mlsservedtotal,integer,,
+Table.Column,claimdate,string,,
+Table.Column,name,string,,
